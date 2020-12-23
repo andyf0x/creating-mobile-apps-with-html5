@@ -43,7 +43,7 @@
     <ol>
       <li>Use the top row of buttons to turn the flashlight on or off, or to make the light red.</li>
       <li>Use the 2nd row of buttons to turn on and off your automatic flashing color light dance party.</li>
-      <li>Use the 3rd row slider button to adjust the speed of the dance party.</li>
+      <li>Use the slider control to adjust the speed of the dance party.</li>
     </ol>
   </div>
 
@@ -68,8 +68,11 @@
       </div>
       <input type="range" id="SPEED-CTL" min="1" max="1000" autocomplete="off" value="500"
         onchange="flipSpeedChange('change', this.value)" oninput="flipSpeedChange('input', this.value)">
+      <audio id="TECHNO" preload="auto" loop src="https://freesound.org/data/previews/380/380823_2305278-lq.mp3"></audio>
+      <audio id="CLASSICAL" preload="auto" loop src="https://freesound.org/data/previews/365/365378_5089431-lq.mp3"></audio>
     </div>
 
+  </div>
 </body>
 
 </html>
