@@ -37,4 +37,16 @@ function doAutoFlip(changespeed) {
 function stopFlip() {
   clearTimeout(t);
   flipping = 0;
-} 
+}
+
+const flipSpeedChange = (event, newSpeed) => {
+  switch (event) {
+    // User is done changing speed, so let's stop the auto flip and restart with new speed
+    case 'change':
+      stopFlip()
+      doAutoFlip(newSpeed)
+    case 'input':
+      // Here we just want to reflect the new speed back to the label while user is dragging the control
+      document.getElementById('SPEED').innerText = newSpeed
+  }
+}

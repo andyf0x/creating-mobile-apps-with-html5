@@ -43,6 +43,7 @@
     <ol>
       <li>Use the top row of buttons to turn the flashlight on or off, or to make the light red.</li>
       <li>Use the 2nd row of buttons to turn on and off your automatic flashing color light dance party.</li>
+      <li>Use the 3rd row slider button to adjust the speed of the dance party.</li>
     </ol>
   </div>
 
@@ -55,8 +56,18 @@
     </div>
 
     <div id="danceparty">
-      <input type="button" id="AUTO" class="bigButton" value="AUTO" onclick="doAutoFlip(500)">
+      <input type="button" id="AUTO" class="bigButton" value="AUTO"
+        onclick="doAutoFlip(document.getElementById('SPEED').innerText)">
       <input type="button" id="STOP" class="bigButton" value="STOP" onclick="stopFlip()">
+    </div>
+
+    <div id="dance-speed">
+      <div>
+        <label id="SPEED-LABEL" for="SPEED">Auto Delay : </label>
+        <output id="SPEED">500</output>
+      </div>
+      <input type="range" id="SPEED-CTL" min="1" max="1000" autocomplete="off" value="500"
+        onchange="flipSpeedChange('change', this.value)" oninput="flipSpeedChange('input', this.value)">
     </div>
 
 </body>
