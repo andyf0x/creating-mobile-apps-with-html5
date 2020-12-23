@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>WatzThis?</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src='main.js'></script>
+  <style>
+    body {
+      font-family: arial, helvetica;
+      text-align: center;
+    }
+
+    #container {}
+
+    #directions,
+    #flashlight,
+    #danceparty {
+      margin: 4px;
+    }
+
+    ol {
+      display: inline-block;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .bigButton {
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>WatzThis?</h1>
+  <div id="directions">
+    <ol>
+      <li>Use the top row of buttons to turn the flashlight on or off, or to make the light red.</li>
+      <li>Use the 2nd row of buttons to turn on and off your automatic flashing color light dance party.</li>
+    </ol>
+  </div>
+
+  <div id="container">
+
+    <div id="flashlight">
+      <input type="button" value="OFF" onclick="flip(0)">
+      <input type="button" value="ON" onclick="flip(1)">
+      <input type="button" value="RED" onclick="flip(2)">
+    </div>
+
+    <div id="danceparty">
+      <input type="button" id="AUTO" class="bigButton" value="AUTO" onclick="doAutoFlip(500)">
+      <input type="button" id="STOP" class="bigButton" value="STOP" onclick="stopFlip()">
+    </div>
+
+</body>
+
+</html>
