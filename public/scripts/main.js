@@ -11,8 +11,8 @@ light[3] = "blue";
 light[4] = "green";
 light[5] = "orange";
 
-function flip(whichway) {
-  document.body.style.backgroundColor = light[whichway];
+function flip(whichWay) {
+  document.body.style.backgroundColor = light[whichWay];
   stopFlip();
 }
 
@@ -26,10 +26,10 @@ function autoFlip() {
   t = setTimeout("autoFlip()", speed);
 }
 
-function doAutoFlip(changespeed) {
+function doAutoFlip(changeSpeed) {
   if (!flipping) {
     flipping = 1;
-    speed = changespeed;
+    speed = changeSpeed;
     setMusic(speed)
     autoFlip();
   }
