@@ -1,0 +1,22 @@
+body {
+  font-family: arial, helvetica;
+  text-align: center;
+}
+
+/* #container {} */
+
+#directions,
+#flashlight,
+#dance-party {
+  margin: 4px;
+}
+
+ol {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.big-button {
+  font-size: 18px;
+}
