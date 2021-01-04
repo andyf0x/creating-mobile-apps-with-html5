@@ -49,19 +49,19 @@ const flipSpeedChange = (event, newSpeed) => {
       doAutoFlip(newSpeed)
     case 'input':
       // Here we just want to reflect the new speed back to the label while user is dragging the control
-      document.getElementById('SPEED').innerText = newSpeed
+      document.getElementById('speed').innerText = newSpeed
   }
 }
 
 const setMusic = (newSpeed) => {
   if (newSpeed > 750) {
-    document.getElementById('TECHNO').pause()
-    document.getElementById('CLASSICAL').play()
+    document.getElementById('techno').pause()
+    document.getElementById('classical').play()
   } else if (newSpeed < 250) {
-    document.getElementById('CLASSICAL').pause()
-    document.getElementById('TECHNO').play()
+    document.getElementById('classical').pause()
+    document.getElementById('techno').play()
   } else {
-    document.getElementById('TECHNO').pause()
-    document.getElementById('CLASSICAL').pause()
+    document.getElementById('techno').pause()
+    document.getElementById('classical').pause()
   }
 }

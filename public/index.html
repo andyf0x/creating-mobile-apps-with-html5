@@ -9,18 +9,17 @@
   <title>WatzThis?</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-  <script src='main.js'></script>
   <style>
     body {
       font-family: arial, helvetica;
       text-align: center;
     }
 
-    #container {}
+    /* #container {} */
 
     #directions,
     #flashlight,
-    #danceparty {
+    #dance-party {
       margin: 4px;
     }
 
@@ -30,7 +29,7 @@
       text-align: left;
     }
 
-    .bigButton {
+    .big-button {
       font-size: 18px;
     }
   </style>
@@ -55,24 +54,27 @@
       <input type="button" value="RED" onclick="flip(2)">
     </div>
 
-    <div id="danceparty">
-      <input type="button" id="AUTO" class="bigButton" value="AUTO"
-        onclick="doAutoFlip(document.getElementById('SPEED').innerText)">
-      <input type="button" id="STOP" class="bigButton" value="STOP" onclick="stopFlip()">
+    <div id="dance-party">
+      <input type="button" id="auto" class="big-button" value="AUTO"
+        onclick="doAutoFlip(document.getElementById('speed').innerText)">
+      <input type="button" id="stop" class="big-button" value="STOP" onclick="stopFlip()">
     </div>
 
     <div id="dance-speed">
       <div>
-        <label id="SPEED-LABEL" for="SPEED">Auto Delay : </label>
-        <output id="SPEED">500</output>
+        <label id="speed-label" for="speed">Auto Delay : </label>
+        <output id="speed">500</output>
       </div>
-      <input type="range" id="SPEED-CTL" min="1" max="1000" autocomplete="off" value="500"
+      <input type="range" id="speed-ctl" min="1" max="1000" autocomplete="off" value="500"
         onchange="flipSpeedChange('change', this.value)" oninput="flipSpeedChange('input', this.value)">
-      <audio id="TECHNO" preload="auto" loop src="https://freesound.org/data/previews/380/380823_2305278-lq.mp3"></audio>
-      <audio id="CLASSICAL" preload="auto" loop src="https://freesound.org/data/previews/365/365378_5089431-lq.mp3"></audio>
+      <audio id="techno" preload="auto" loop
+        src="https://freesound.org/data/previews/380/380823_2305278-lq.mp3"></audio>
+      <audio id="classical" preload="auto" loop
+        src="https://freesound.org/data/previews/365/365378_5089431-lq.mp3"></audio>
     </div>
 
   </div>
+  <script src='main.js'></script>
 </body>
 
 </html>
