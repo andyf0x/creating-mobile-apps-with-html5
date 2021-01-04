@@ -45,6 +45,10 @@
       </div>
       <input type="range" id="speed-ctl" min="1" max="1000" autocomplete="off" value="500"
         onchange="flipSpeedChange('change', this.value)" oninput="flipSpeedChange('input', this.value)">
+      <div>
+        <label id="color-label" for="color">Current Color : </label>
+        <output id="color">white</output>
+      </div>
       <audio id="techno" preload="auto" loop
         src="https://freesound.org/data/previews/380/380823_2305278-lq.mp3"></audio>
       <audio id="classical" preload="auto" loop

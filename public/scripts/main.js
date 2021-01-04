@@ -13,11 +13,13 @@ light[5] = "orange";
 
 function flip(whichWay) {
   document.body.style.backgroundColor = light[whichWay];
+  document.getElementById('color').innerText = light[whichWay]
   stopFlip();
 }
 
 function autoFlip() {
   document.body.style.backgroundColor = light[color];
+  document.getElementById('color').innerText = light[color]
   if (color > 1) {
     color -= 2;
   } else {
