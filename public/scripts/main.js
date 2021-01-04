@@ -18,8 +18,8 @@ function flip(whichWay) {
 
 function autoFlip() {
   document.body.style.backgroundColor = light[color];
-  if (color > 0) {
-    color--;
+  if (color > 1) {
+    color -= 2;
   } else {
     color = light.length - 1;
   }
