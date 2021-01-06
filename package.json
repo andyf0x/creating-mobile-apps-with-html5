@@ -1,0 +1,23 @@
+{
+  "name": "creating-mobile-apps-with-html5",
+  "version": "0.0.5",
+  "description": "Creating Mobile Apps With HTML5",
+  "main": " ",
+  "dependencies": {
+    "standard": "^16.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyf0x/creating-mobile-apps-with-html5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andyf0x/creating-mobile-apps-with-html5/issues"
+  },
+  "homepage": "https://github.com/andyf0x/creating-mobile-apps-with-html5#readme"
+}
