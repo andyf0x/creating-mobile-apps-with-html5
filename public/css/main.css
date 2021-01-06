@@ -20,3 +20,18 @@ ol {
 .big-button {
   font-size: 18px;
 }
+
+.box {
+  display: flex;
+  justify-content: center;
+}
+
+.box-item label {
+  margin-right: 5px;
+  text-align: right;
+}
+
+.box-item {
+  text-align: left;
+  min-width: 50px;
+}
