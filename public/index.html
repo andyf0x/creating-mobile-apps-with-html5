@@ -39,11 +39,12 @@
     </div>
 
     <div id="dance-speed">
-      <div>
-        <label id="speed-label" for="speed">Auto Delay : </label>
-        <output id="speed">500</output>
+      <div class="box">
+        <div class="box-item"><label id="speed-label" for="speed">Dance Party Speed :</label></div>
+        <div class="box-item"><output id="speed">2.00</output></div>
+        <div class="box-item"><output id="speed-text">frames/second</output></div>
       </div>
-      <input type="range" id="speed-ctl" min="1" max="1000" autocomplete="off" value="500"
+      <input type="range" id="speed-ctl" min="0" max="20" step="0.01" autocomplete="off" value="2.00"
         onchange="flipSpeedChange('change', this.value)" oninput="flipSpeedChange('input', this.value)">
       <div class="box">
         <div class="box-item"><label id="color-label" for="color">Current Color :</label></div>

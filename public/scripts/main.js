@@ -1,7 +1,8 @@
+const TECHNO_SPEED = 2
+
 var light = new Array();
 var t;
 var color = 0;
-var flipping = 0;
 var speed;
 
 light[0] = 'black';
@@ -25,29 +26,37 @@ function autoFlip() {
   } else {
     color = light.length - 1;
   }
-  t = setTimeout("autoFlip()", speed);
 }
 
-function doAutoFlip(changeSpeed) {
-  if (!flipping) {
-    flipping = 1;
-    speed = changeSpeed;
-    setMusic(speed)
+function doAutoFlip(fps) {
+  if (fps == 0) {
+    stopFlip()
+    return
+  }
+
+  // Change speed is now frames / second
+  let changeSpeed = 1000 / fps
+
+  // Only adjust the interval if the frequency has changed
+  if (speed !== changeSpeed) {
+    speed = changeSpeed
+
+    setMusic(changeSpeed)
     autoFlip();
+    t = setInterval("autoFlip()", speed);
   }
 }
 
 function stopFlip() {
   clearTimeout(t);
-  flipping = 0;
-  setMusic(500)
+  speed = 0
+  setMusic(0)
 }
 
 const flipSpeedChange = (event, newSpeed) => {
   switch (event) {
     // User is done changing speed, so let's stop the auto flip and restart with new speed
     case 'change':
-      stopFlip()
       doAutoFlip(newSpeed)
     case 'input':
       // Here we just want to reflect the new speed back to the label while user is dragging the control
@@ -56,14 +65,14 @@ const flipSpeedChange = (event, newSpeed) => {
 }
 
 const setMusic = (newSpeed) => {
-  if (newSpeed > 750) {
+  if (newSpeed == 0) {
     document.getElementById('techno').pause()
-    document.getElementById('classical').play()
-  } else if (newSpeed < 250) {
     document.getElementById('classical').pause()
+  } else if (newSpeed > TECHNO_SPEED) {
     document.getElementById('techno').play()
+    document.getElementById('classical').pause()
   } else {
     document.getElementById('techno').pause()
-    document.getElementById('classical').pause()
+    document.getElementById('classical').play()
   }
 }
