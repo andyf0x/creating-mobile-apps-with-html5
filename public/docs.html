@@ -1,33 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <title> WatzThis.com Documentation</title>
-  <link rel="stylesheet" type="text/css" href="./css/watzthis.css">
+  <!-- <link rel="stylesheet" type="text/css" href="./css/watzthis.css"> -->
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
 </head>
+
 <body>
-  <header>
-    <h1>How to use WatzThis</h1>
-  </header>
-     <section>
-      <h2>Chapter 1: The Buttons</h2>
-      <p>WatzThis has several buttons. Each has a different function. The following figure shows the buttons.</p>
-      <figure>
-      <img src="./images/buttons.png" alt="Here are the buttons">
-      <figcaption>You can see the buttons here.</figcaption>
-      </figure>
-    </section>
-    <section>
-      <h2>Chapter 2: The Lights</h2>
-      <p>WatzThis has colors. They change when you press different buttons.</p>
-    </section>
-    <section>
-      <h2>Chapter 3: "Auto" Mode</h2>
-      <p>WatzThis has an automatic mode that's useful for those times when you're doing something else, such as dancing, but would still like to have changing colors on your mobile device.</p>
-    </section>
-  <footer>
-  <p>created by WatzThis Enterprises</p>
-  </footer>
- </body>
+  <div data-role="page" data-theme="b">
+
+    <header data-role="header">
+      <h1>How to use WatzThis</h1>
+    </header>
+
+    <div data-role="collapsible-set">
+      <section data-role="collapsible">
+        <h2>Chapter 1: The Buttons</h2>
+        <p>WatzThis has several buttons. Each has a different function. The following figure shows the buttons.</p>
+        <figure>
+          <img src="./images/buttons.png" alt="Here are the buttons">
+          <figcaption>You can see the buttons here.</figcaption>
+        </figure>
+      </section>
+
+      <section data-role="collapsible">
+        <h2>Chapter 2: The Lights</h2>
+        <p>WatzThis has colors. They change when you press different buttons.</p>
+      </section>
+
+      <section data-role="collapsible">
+        <h2>Chapter 3: "Auto" Mode</h2>
+        <p>WatzThis has an automatic mode that's useful for those times when you're doing something else, such as
+          dancing, but would still like to have changing colors on your mobile device.</p>
+      </section>
+    </div>
+
+    <footer data-role="footer" data-position="fixed">
+      <p>created by WatzThis Enterprises</p>
+    </footer>
+
+  </div>
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script>
+    $(document).bind('mobileinit', function () {
+      $.mobile.pushStateEnabled = false;
+    });
+  </script>
+  <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+</body>
+
 </html>
