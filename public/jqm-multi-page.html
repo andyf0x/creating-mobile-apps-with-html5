@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+</head>
+
+<body>
+
+    <div data-role="page" id="mypage">
+
+        <div data-role="header" data-position="fixed">
+            <a href="javascript:history.go(-1)">Back</a>
+            <h1>My Title</h1>
+            <a href="javascript:history.go(0)">Home</a>
+        </div><!-- /header -->
+
+        <div data-role="content">
+            <p>Hello world. <a href="#yourpage">Click here!</a></p>
+        </div><!-- /content -->
+
+        <div data-role="footer" data-position="fixed">
+            <p>Footer text</p>
+        </div><!-- /footer -->
+
+    </div><!-- /page -->
+
+    <div data-role="page" id="yourpage">
+
+        <div data-role="header" data-position="fixed">
+            <a href="javascript:history.go(-1)">Back</a>
+            <h1>My Title</h1>
+            <a href="#mypage">Home</a>
+        </div><!-- /header -->
+
+        <div data-role="content">
+            <p>OH hi! Check out <a href="#mypage">My page!</a></p>
+        </div><!-- /content -->
+
+        <div data-role="footer" data-position="fixed">
+            <p>Footer text</p>
+        </div><!-- /footer -->
+
+    </div><!-- /page -->
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).bind('mobileinit', function () {
+            $.mobile.pushStateEnabled = false;
+        });
+    </script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+</body>
+
+</html>
