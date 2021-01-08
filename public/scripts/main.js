@@ -30,7 +30,7 @@ function autoFlip () {
 }
 
 function doAutoFlip (fps) {
-    stopFlip()
+  stopFlip()
 
   if (fps !== '0') {
     // Change speed is now frames / second, so calculate our MS interval
@@ -74,3 +74,10 @@ const setMusic = (newSpeed) => {
     document.getElementById('classical').play()
   }
 }
+
+// eslint-disable-next-line no-unused-vars
+const getLocation = () => navigator.geolocation.getCurrentPosition((position) => {
+  const latitude = position.coords.latitude
+  const longitude = position.coords.longitude
+  window.alert('Your Latitude is: ' + latitude + ' and your longitude is: ' + longitude + '! Have fun!')
+})
