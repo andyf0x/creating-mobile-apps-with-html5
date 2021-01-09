@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Find Caches Near Me!</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/main.css'>
+</head>
+
+<body>
+    <h1>Geocaches</h1>
+    <p>If your browser asks to use your current location, click Yes. You will then be redirected to geocaching.com</p>
+
+    <script>
+        navigator.geolocation.getCurrentPosition(makeLink, noLink)
+
+        function makeLink(position) {
+            var lat = position.coords.latitude
+            var long = position.coords.longitude
+            document.location.href = "http://www.geocaching.com/seek/nearest.aspx?origin_lat=" + lat + "&origin_long=" + long + "&dist=100&submit3=Search"
+        }
+        function noLink() {
+            alert('Location not found!')
+        }
+    </script>
+
+</body>
+
+</html>
