@@ -15,20 +15,7 @@
 <body>
     <h1>Geocaches</h1>
     <p>If your browser asks to use your current location, click Yes. You will then be redirected to geocaching.com</p>
-
-    <script>
-        navigator.geolocation.getCurrentPosition(makeLink, noLink)
-
-        function makeLink(position) {
-            var lat = position.coords.latitude
-            var long = position.coords.longitude
-            document.location.href = "http://www.geocaching.com/seek/nearest.aspx?origin_lat=" + lat + "&origin_long=" + long + "&dist=100&submit3=Search"
-        }
-        function noLink() {
-            alert('Location not found!')
-        }
-    </script>
-
+    <script src='./scripts/geocaching.js'></script>
 </body>
 
 </html>
