@@ -24,3 +24,6 @@ window.initMap = () => {
 
 // Append the 'script' element to 'head'
 document.head.appendChild(script)
+
+// Provide our map to others
+window.getMap = async () => map

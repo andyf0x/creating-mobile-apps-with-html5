@@ -3,8 +3,6 @@
 
 <head>
   <meta charset='utf-8'>
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -54,13 +52,15 @@
       <audio id="classical" preload="auto" loop
         src="https://freesound.org/data/previews/365/365378_5089431-lq.mp3"></audio>
     </div>
-
+    <br>
     <div id="geolocation">
-      <input type="button" id="lat-long" class="big-button" value="GET LOCATION" onclick="getLocation();">
+      <input type="button" id="lat-long" class="big-button" value="GET LOCATION" onclick="getLocation()">
     </div>
-
+    <br>
+    <div id="map-canvas"></div>
   </div>
   <script src='./scripts/main.js'></script>
+  <script src="./scripts/google-maps.js"></script>
 </body>
 
 </html>

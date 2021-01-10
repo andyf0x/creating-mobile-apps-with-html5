@@ -4,6 +4,7 @@ const TECHNO_SPEED = 2
 
 const light = []
 const intervals = []
+let myLatLong
 
 light[0] = 'black'
 light[1] = 'white'
@@ -77,7 +78,39 @@ const setMusic = (newSpeed) => {
 
 // eslint-disable-next-line no-unused-vars
 const getLocation = () => navigator.geolocation.getCurrentPosition((position) => {
-  const latitude = position.coords.latitude
-  const longitude = position.coords.longitude
-  window.alert('Your Latitude is: ' + latitude + ' and your longitude is: ' + longitude + '! Have fun!')
+  myLatLong = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+  dropPinOnMap()
 })
+
+const dropPinOnMap = async () => {
+  const map = await window.getMap()
+
+  // eslint-disable-next-line no-unused-vars
+  const pin = new google.maps.Marker({
+    position: myLatLong,
+    map: map,
+    animation: google.maps.Animation.DROP,
+    title: 'You are here !!'
+  })
+
+  // Wait a few, then start zooming...
+  await timeout(2000)
+  zoomToLocation()
+}
+
+// eslint-disable-next-line no-unused-vars
+const zoomToLocation = async () => {
+  const map = await window.getMap()
+  map.panTo(myLatLong)
+
+  // Zoom in level by level. We have to control the view width, otherwise the
+  // maps repeat.
+  for (let zoom = map.getZoom() + 1; zoom <= 18; zoom++) {
+    map.setZoom(zoom)
+    const maxWidth = 256 * (2 ** zoom)
+    document.getElementById('map-canvas').style.maxWidth = `${maxWidth}px`
+    await timeout(750)
+  }
+}
+
+const timeout = (ms) => new Promise(resolve => setTimeout(resolve, ms))
