@@ -1,4 +1,4 @@
-'use strict'
+import getMap from './google-maps'
 
 const TECHNO_SPEED = 2
 
@@ -13,14 +13,13 @@ light[3] = 'blue'
 light[4] = 'green'
 light[5] = 'orange'
 
-// eslint-disable-next-line no-unused-vars
-function flip (whichWay) {
+const flip = (whichWay) => {
   document.body.style.backgroundColor = light[whichWay]
   document.getElementById('color').innerText = light[whichWay]
   stopFlip()
 }
 
-function autoFlip () {
+const autoFlip = () => {
   let idx = light.indexOf(document.body.style.backgroundColor)
 
   if (idx === light.length - 1) {
@@ -30,7 +29,7 @@ function autoFlip () {
   document.getElementById('color').innerText = document.body.style.backgroundColor
 }
 
-function doAutoFlip (fps) {
+const doAutoFlip = (fps) => {
   stopFlip()
 
   if (fps !== '0') {
@@ -43,15 +42,14 @@ function doAutoFlip (fps) {
   }
 }
 
-function stopFlip () {
+const stopFlip = () => {
   for (const interval of intervals) {
     clearTimeout(interval)
   }
   setMusic(0)
 }
 
-// eslint-disable-next-line no-unused-vars
-function flipSpeedChange (event, newSpeed) {
+const flipSpeedChange = (event, newSpeed) => {
   switch (event) {
     // User is done changing speed, so let's stop the auto flip and restart with new speed
     case 'change':
@@ -76,41 +74,67 @@ const setMusic = (newSpeed) => {
   }
 }
 
-// eslint-disable-next-line no-unused-vars
-const getLocation = () => navigator.geolocation.getCurrentPosition((position) => {
-  myLatLong = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-  dropPinOnMap()
-})
-
-const dropPinOnMap = async () => {
-  const map = await window.getMap()
-
-  // eslint-disable-next-line no-unused-vars
-  const pin = new google.maps.Marker({
-    position: myLatLong,
-    map: map,
-    animation: google.maps.Animation.DROP,
-    title: 'You are here !!'
-  })
-
-  // Wait a few, then start zooming...
-  await timeout(2000)
-  zoomToLocation()
+// getPosition options are: -
+// maximumAge: integer (milliseconds) | infinity - maximum cached position age.
+// timeout: integer (milliseconds) - amount of time before the error callback is invoked, if 0 it will never invoke.
+// enableHighAccuracy: false | true
+const getPosition = (options) => {
+  return new Promise((resolve, reject) =>
+    navigator.geolocation.getCurrentPosition(resolve, reject, options)
+  )
 }
 
-// eslint-disable-next-line no-unused-vars
-const zoomToLocation = async () => {
-  const map = await window.getMap()
-  map.panTo(myLatLong)
+const getLocation = async (options) => {
+  try {
+    const position = await getPosition(options)
+    myLatLong = new window.google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+    dropPinOnMap()
+  } catch (err) {
+    window.alert(`Error : ${err.constructor.name}\n\n${err.message}`)
+    console.log(err)
+  }
+}
 
-  // Zoom in level by level. We have to control the view width, otherwise the
-  // maps repeat.
-  for (let zoom = map.getZoom() + 1; zoom <= 18; zoom++) {
-    map.setZoom(zoom)
-    const maxWidth = 256 * (2 ** zoom)
-    document.getElementById('map-canvas').style.maxWidth = `${maxWidth}px`
-    await timeout(750)
+const dropPinOnMap = async () => {
+  try {
+    const map = await getMap()
+
+    // eslint-disable-next-line no-unused-vars
+    const pin = new window.google.maps.Marker({
+      position: myLatLong,
+      map: map,
+      animation: window.google.maps.Animation.DROP,
+      title: 'You are here !!'
+    })
+
+    // Wait a few, then start zooming...
+    await timeout(2000)
+    zoomToLocation()
+  } catch (err) {
+    window.alert(`Error : ${err.constructor.name}\n\n${err.message}`)
+    console.log(err)
+  }
+}
+
+const zoomToLocation = async () => {
+  try {
+    const map = await getMap()
+    map.panTo(myLatLong)
+
+    // Zoom in level by level. We have to control the view width, otherwise the
+    // maps repeat.
+    for (let zoom = map.getZoom() + 1; zoom <= 18; zoom++) {
+      map.setZoom(zoom)
+      const maxWidth = 256 * (2 ** zoom)
+      document.getElementById('map-canvas').style.maxWidth = `${maxWidth}px`
+      await timeout(750)
+    }
+  } catch (err) {
+    window.alert(`Error : ${err.constructor.name}\n\n${err.message}`)
+    console.log(err)
   }
 }
 
 const timeout = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
+export { flip, doAutoFlip, stopFlip, flipSpeedChange, getLocation }

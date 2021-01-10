@@ -24,15 +24,15 @@
   <div id="container">
 
     <div id="flashlight">
-      <input type="button" value="OFF" onclick="flip(0)">
-      <input type="button" value="ON" onclick="flip(1)">
-      <input type="button" value="RED" onclick="flip(2)">
+      <input type="button" value="OFF" onclick="whats_app.flip(0)">
+      <input type="button" value="ON" onclick="whats_app.flip(1)">
+      <input type="button" value="RED" onclick="whats_app.flip(2)">
     </div>
 
     <div id="dance-party">
       <input type="button" id="auto" class="big-button" value="AUTO"
-        onclick="doAutoFlip(document.getElementById('speed').innerText)">
-      <input type="button" id="stop" class="big-button" value="STOP" onclick="stopFlip()">
+        onclick="whats_app.doAutoFlip(document.getElementById('speed').innerText)">
+      <input type="button" id="stop" class="big-button" value="STOP" onclick="whats_app.stopFlip()">
     </div>
 
     <div id="dance-speed">
@@ -42,7 +42,8 @@
         <div class="box-item"><output id="speed-text">frames/second</output></div>
       </div>
       <input type="range" id="speed-ctl" min="0" max="20" step="0.01" autocomplete="off" value="2.00"
-        onchange="flipSpeedChange('change', this.value)" oninput="flipSpeedChange('input', this.value)">
+        onchange="whats_app.flipSpeedChange('change', this.value)"
+        oninput="whats_app.flipSpeedChange('input', this.value)">
       <div class="box">
         <div class="box-item"><label id="color-label" for="color">Current Color :</label></div>
         <div class="box-item"><output id="color">white</output></div>
@@ -54,13 +55,15 @@
     </div>
     <br>
     <div id="geolocation">
-      <input type="button" id="lat-long" class="big-button" value="GET LOCATION" onclick="getLocation()">
+      <input type="button" id="lat-long" class="big-button" value="GET LOCATION" onclick="whats_app.getLocation()">
     </div>
     <br>
     <div id="map-canvas"></div>
   </div>
-  <script src='./scripts/main.js'></script>
-  <script src="./scripts/google-maps.js"></script>
+  <script type="module">
+    import * as whats_app from './scripts/main'
+    window.whats_app = whats_app
+  </script>
 </body>
 
 </html>

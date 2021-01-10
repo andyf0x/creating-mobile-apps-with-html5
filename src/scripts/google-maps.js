@@ -1,29 +1,35 @@
+import { Loader } from '@googlemaps/js-api-loader'
+
 let map
 
-// Create the script tag dynamically, set the appropriate attributes
-const script = document.createElement('script')
-script.src = 'https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE'
-script.defer = true
-// https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY
-// &callback=FUNCTION_NAME
-// &v=VERSION
-// &libraries="LIBRARIES"
-// &language="LANGUAGE"
-// &region="REGION"
+const loader = new Loader({
+  apiKey: 'AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE',
+  version: 'weekly'
+  // id?: '' // SCRIPT TAG
+  // libraries?: ['drawing', 'geometry', 'places', 'visualization']
+  // language?: "LANGUAGE"
+  // region?: "REGION"
+  // mapIds?: string[]; You can add multiple Map IDs to your map using the map_ids in your bootstrap request.
+  // url?: string;  Use a custom url and path to load the Google Maps API script.
+  // nonce?: string;  Use a cryptographic nonce attribute.
+  // retries?: number;  Number of script load retries.
+})
 
-// Attach your callback function to the `window` object
-window.initMap = () => {
-  // JS API is loaded and available
-  const myOptions = {
-    zoom: 1,
-    center: new google.maps.LatLng(-34.397, 150.644),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  map = new google.maps.Map(document.getElementById('map-canvas'), myOptions)
-}
-
-// Append the 'script' element to 'head'
-document.head.appendChild(script)
+loader
+  .load()
+  .then(() => {
+    // JS API is loaded and available
+    map = new window.google.maps.Map(document.getElementById('map-canvas'), {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 1
+    })
+  })
+  .catch(err => {
+    window.alert(`Error : ${err.constructor.name}\n\n${err.message}`)
+    console.log(err)
+  })
 
 // Provide our map to others
-window.getMap = async () => map
+const getMap = async () => map
+
+export default getMap
