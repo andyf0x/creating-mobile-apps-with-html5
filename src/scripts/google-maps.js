@@ -1,9 +1,10 @@
 import { Loader } from '@googlemaps/js-api-loader'
+import * as load from './loaders'
 
 let map
 
 const loader = new Loader({
-  apiKey: 'AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE',
+  apiKey: load.map(0x1db),
   version: 'weekly'
   // id?: '' // SCRIPT TAG
   // libraries?: ['drawing', 'geometry', 'places', 'visualization']
