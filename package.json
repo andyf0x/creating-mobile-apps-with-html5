@@ -5,13 +5,12 @@
   "engines": {
     "node": "14.x"
   },
-  "main": " ",
   "type": "module",
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.11.1"
   },
   "devDependencies": {
-    "snowpack": "^2.18.5",
+    "snowpack": "^3.0.10",
     "standard": "^16.0.3"
   },
   "scripts": {
