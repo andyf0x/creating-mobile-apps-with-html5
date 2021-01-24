@@ -13,16 +13,19 @@
 <body>
 
   <h1>WatzThis?</h1>
-  <div id="directions">
-    <ol>
-      <li>Use the top row of buttons to turn the flashlight on or off, or to make the light red.</li>
-      <li>Use the 2nd row of buttons to turn on and off your automatic flashing color light dance party.</li>
-      <li>Use the slider control to adjust the speed of the dance party.</li>
-    </ol>
-  </div>
 
   <div id="container">
 
+    <object width="100%" height="100px" data="./images/animated_ghost.svg" type="image/svg+xml"></object>
+
+    <div id="directions">
+      <ol>
+        <li>Use the top row of buttons to turn the flashlight on or off, or to make the light red.</li>
+        <li>Use the 2nd row of buttons to turn on and off your automatic flashing color light dance party.</li>
+        <li>Use the slider control to adjust the speed of the dance party.</li>
+      </ol>
+    </div>
+    
     <div id="flashlight">
       <input type="button" value="OFF" onclick="whats_app.flip(0)">
       <input type="button" value="ON" onclick="whats_app.flip(1)">
