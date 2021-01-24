@@ -16,6 +16,14 @@ light[5] = 'orange'
 const flip = (whichWay) => {
   document.body.style.backgroundColor = light[whichWay]
   document.getElementById('color').innerText = light[whichWay]
+
+  // Make text visible when background is black
+  if (document.body.style.backgroundColor === 'black') {
+    document.body.style.color = 'white'
+  } else {
+    document.body.style.color = 'black'
+  }
+
   stopFlip()
 }
 
