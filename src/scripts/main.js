@@ -13,18 +13,28 @@ light[3] = 'blue'
 light[4] = 'green'
 light[5] = 'orange'
 
+const setGhost = (isActive) => {
+  if (isActive) {
+    document.getElementById('ghost-object').data = './images/animated_ghost.svg'
+  } else {
+    document.getElementById('ghost-object').removeAttribute('data')
+  }
+}
+
 const flip = (whichWay) => {
   document.body.style.backgroundColor = light[whichWay]
   document.getElementById('color').innerText = light[whichWay]
 
+  stopFlip()
+
   // Make text visible when background is black
   if (document.body.style.backgroundColor === 'black') {
     document.body.style.color = 'white'
+    setGhost(true)
   } else {
     document.body.style.color = 'black'
+    setGhost(false)
   }
-
-  stopFlip()
 }
 
 const autoFlip = () => {
@@ -55,6 +65,7 @@ const stopFlip = () => {
     clearTimeout(interval)
   }
   setMusic(0)
+  setGhost(false)
 }
 
 const flipSpeedChange = (event, newSpeed) => {
