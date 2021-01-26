@@ -19,7 +19,7 @@ module.exports = {
     out: 'public'
   },
   optimize: {
-    bundle: true,
+    bundle: false,
     minify: true,
     target: 'es2018'
   }
