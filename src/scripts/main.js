@@ -13,11 +13,39 @@ light[3] = 'blue'
 light[4] = 'green'
 light[5] = 'orange'
 
-const setGhost = (isActive) => {
+const setGhostDirection = (direction) => {
+  const svgDoc = document.getElementById('ghost').contentDocument
+  const svg = svgDoc.children[0]
+
+  const svgEl = svg.getElementById('svgGhostId')
+  const animateEl = svg.getElementById('svgGhostAnimateId')
+
+  if (direction === 'left') {
+    svgEl.setAttribute('x', '100%')
+    animateEl.setAttribute('to', '-100')
+  } else if (direction === 'right') {
+    svgEl.setAttribute('x', '-100')
+    animateEl.setAttribute('to', '100%')
+  }
+
+  animateEl.beginElement()
+}
+
+const setGhostActive = (isActive) => {
+  const svgDoc = document.getElementById('ghost').contentDocument
+  const svg = svgDoc.children[0]
+  const animateEl = svg.getElementById('svgGhostAnimateId')
+
   if (isActive) {
-    document.getElementById('ghost-object').data = './images/animated_ghost.svg'
+    const dur = animateEl.getAttribute('dur')
+    if (dur !== '5s') {
+      animateEl.setAttribute('dur', '5s')
+      animateEl.endElement()
+      animateEl.beginElement()
+    }
   } else {
-    document.getElementById('ghost-object').removeAttribute('data')
+    animateEl.removeAttribute('dur')
+    animateEl.endElement()
   }
 }
 
@@ -25,15 +53,13 @@ const flip = (whichWay) => {
   document.body.style.backgroundColor = light[whichWay]
   document.getElementById('color').innerText = light[whichWay]
 
-  stopFlip()
-
   // Make text visible when background is black
   if (document.body.style.backgroundColor === 'black') {
     document.body.style.color = 'white'
-    setGhost(true)
+    setGhostActive(true)
   } else {
     document.body.style.color = 'black'
-    setGhost(false)
+    setGhostActive(false)
   }
 }
 
@@ -65,7 +91,7 @@ const stopFlip = () => {
     clearTimeout(interval)
   }
   setMusic(0)
-  setGhost(false)
+  setGhostActive(false)
 }
 
 const flipSpeedChange = (event, newSpeed) => {
@@ -156,4 +182,4 @@ const zoomToLocation = async () => {
 
 const timeout = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
-export { flip, doAutoFlip, stopFlip, flipSpeedChange, getLocation }
+export { flip, doAutoFlip, stopFlip, flipSpeedChange, getLocation, setGhostDirection }
